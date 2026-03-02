@@ -73,14 +73,14 @@ chrome.runtime.onConnect.addListener((port) => {
   }
 });
 
-chrome.runtime.onMessage.addListener((message) => {
+/*chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "PAGE_UPDATE" && popupPort) {
     popupPort.postMessage({
       type: "UPDATE_POPUP",
       data: message.data
     });
   }
-});
+});*/
 
 async function getCurrentTab() {
   let queryOptions = { active: true, lastFocusedWindow: true };
@@ -205,7 +205,7 @@ chrome.webNavigation.onCommitted.addListener((details) => {
 });
 
 // Handle messages from popup
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+/*chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'getRequests') {
     const tabId = request.tabId;
     const requests = tabRequests.get(tabId);
@@ -229,11 +229,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true;
   }
 
-  if (request.action === "PAGE_UPDATE" && popupPort) {
+  /*if (request.action === "PAGE_UPDATE" && popupPort) {
     popupPort.postMessage({
       type: "UPDATE_POPUP",
       data: request.data
     });
   }
 
-});
+});*/
